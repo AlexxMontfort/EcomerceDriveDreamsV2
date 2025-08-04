@@ -1,6 +1,6 @@
 <template>
     <section class="py-12 scroll-mt-20 bg-gray-50" id="Products">
-        <main class="container mx-auto px-4">
+        <main class="container mx-auto px4">
             <header class="flex justify-between items-center mb-8">
                 <h2 class="md:text-3xl text-2xl font-bold text-amber-900">Productos destacados </h2>
                 <nav class="flex space-x-4" aria-label="Products carusel controls">
@@ -17,21 +17,22 @@
                 </nav>
             </header>
 
-            <section class="relative overflow-hidden">
-                <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <li v-for="product in visibleProducts" :key="product.id" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200
+            <section class="relative overflow-hidden"> 
+                <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <li v-for="product in visibleProducts" :key="product.id" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-700
                     hover:scale-105">
                         <article>
-                            <figure class="relative">
+                            <figure class="relative"> <!--icono de 10% de descuento, logo de corazon-->
                                 <img src="../assets/HeroTsuru.webp" :alt="product.name" class="w-full h-64 object-cover" />
-                                <figcaption v-if="product.discount > 0"
+                                <!--10%OFF-->
+                                <figcaption v-if="product.discount > 0" 
                                     class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
                                     -{{ product.discount }}%
                                 </figcaption>
 
-                                <button
+                                <button 
                                     class="absolute top-3 left-3 p-2 bg-white rounded-full shadow-md hover:bg-pink-500 text-gray-800"
-                                    aria-label="Add to whislist">
+                                    aria-label="Add to whislist"> <!--BOTON DE CORAZON-->
                                     <Icon icon="line-md:heart" width="18" height=18 />
                                 </button>
                             </figure>
@@ -85,7 +86,8 @@ const products = [
     { id: 2, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
     { id: 3, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
     { id: 4, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
-    { id: 5, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 }
+    { id: 5, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
+    { id: 6, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 }
 ]
 
 const totalSlides = computed(() => Math.ceil(products.length / productPerPage.value));
@@ -101,7 +103,8 @@ const nextSlide = () => {
 const prevSlide = () => {
     currentSlide.value = currentSlide.value === totalSlides.value - 1 ? 0 : currentSlide.value - 1;
 }
-
+//Con esta constante asignamos el numero de tarjetas que se muestra en la seccion productos destacados
+//si es < 640px solo muestra una tarjeta, < 768 muestra 2 tarjetas y asi consecutivamente
 const handleResize = () => {
     if (window.innerWidth < 640) {
         productPerPage.value = 1;
