@@ -48,10 +48,6 @@
                                             ${{product.price.toFixed(2)}}
                                         </span>
                                     </div>
-                                    <button class="p-2 bg-pink-950 rounded-full text-white hover:bg-pink-700 transition-colors"
-                                    aria-label="Add to cart">
-                                        <Icon icon="icon-park-solid:shopping" width="18" height="18"/>
-                                    </button>
                                 </footer>
                             </section>
                         </article>
