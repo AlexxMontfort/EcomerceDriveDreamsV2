@@ -18,7 +18,7 @@
             </header>
 
             <section class="relative overflow-hidden">
-                <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
                     <li v-for="product in visibleProducts" :key="product.id" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200
                     hover:scale-105">
                         <article>
@@ -36,13 +36,8 @@
                                 </button>
                             </figure>
                             <section class="p-4">
-                                <div class="flex items-center mb-2">
-                                    <Icon v-for="i in 5" :key="i" icon="line-md:star-alt-filled" width="16" height="16"
-                                    :class="i <= Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-800' " />
-                                    <span class="text-sm text-gray-500 ml-1 ">({{ product.rating}})</span>
-                                </div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ product.name}}</h3>
-
+                                <h3 class="text-3xl font-bold text-gray-800 mb-1">{{ product.name}}</h3>
+                                <h4>{{ product.marca }}</h4>
                                 <footer class="flex items-center justify-between">
                                     <div>
                                         <span class="text-lg font-bold text-pink-600">
@@ -78,14 +73,14 @@
 import { ref, computed, onMounted, onBeforeMount, onBeforeUnmount } from 'vue'
 
 const currentSlide = ref(0);
-const productPerPage = ref(4);
+const productPerPage = ref(3);
 
 const products = [
-    { id: 1, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
-    { id: 2, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
-    { id: 3, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
-    { id: 4, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 },
-    { id: 5, name: 'car1', price: 99.99, rating: 4.5, Image: '../assets/centra2026product.png', discount: 10 }
+    { id: 1, name: 'car1', price: 99.99, marca: 'AlexMarc', Image: '../assets/centra2026product.png', discount: 10 },
+    { id: 2, name: 'car1', price: 99.99, marca: 'AlexMarc', Image: '../assets/centra2026product.png', discount: 10 },
+    { id: 3, name: 'car1', price: 99.99, marca: 'AlexMarc', Image: '../assets/centra2026product.png', discount: 10 },
+    { id: 4, name: 'car1', price: 99.99, marca: 'AlexMarc', Image: '../assets/centra2026product.png', discount: 10 },
+    { id: 5, name: 'car1', price: 99.99, marca: 'AlexMarc', Image: '../assets/centra2026product.png', discount: 10 }
 ]
 
 const totalSlides = computed(() => Math.ceil(products.length / productPerPage.value));
@@ -110,7 +105,7 @@ const handleResize = () => {
     } else if (window.innerWidth < 1024) {
         productPerPage.value = 3;
     } else {
-        productPerPage.value = 4;   
+        productPerPage.value = 3;   
     }
 }
 onMounted(() => {
