@@ -3,6 +3,7 @@
     <section :class="['w-full', isScrolled ? 'bg-gray-100/95 backdrop-blur shadow-md py-2' : 'bg-gray-100 py-4']">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6"> <!--LAYOUT MENU-->
+
           <!--LOGO + MENU DESPLEGABLE -->
           <div class="flex justify-between items-center w-full md:w-auto">
             <a href="/" class="text-2xl font-bold text-pink-900">DRIVE-DREAMS</a>
@@ -11,19 +12,23 @@
               <Icon icon="mdi:menu" class="w-6 h-6" />
             </button>
           </div>
+          <!--BOTOONES DE NAVEGACION DE LA NAVBAR-->
+          <nav class="bg-white-900" aria-label="main navegation">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <ul class="hidden md:flex justify-center py-3 flex-wrap gap-x-6 text-sm font-medium text-red">
+                <li v-for="item in navItems" :key="item.id">
+                  <a :href="item.link" class="hover:text-sky-500">{{ item.name }}</a>
+                </li>
+              </ul>
+              <section v-if="isMobileMenuOpen"
+                class="md:hidden mt-2 bg-white rounded-lg shadow-md p-4 space-y-3 text-[#5D4037] text-center"
+                aria-label="Movile-navigation">
+                <a v-for="item in navItems" :href="item.link" :key="item.id"
+                  class="block hover:text-amber-600 text-sm font-medium">{{ item.name }}</a>
+              </section>
+            </div>
+          </nav>
           <!--BARRA DE BUSQUEDA-->
-          <form class="w-full max-w-sm" role="search" aria-label="Site search">
-            <label for="relative w-full">
-              <input type="text" placeholder="Search..."
-                class="w-full px-3 py-2 text-xs border border-blue-950 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500">
-              <button type="submit"
-                class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-indigo-600"
-                aria-label="Search button">
-                <Icon icon="mdi:magnify" class="w-4 h-4"></Icon>
-              </button>
-            </label>
-          </form>
-
           <!--IconOS-->
           <aside class="flex items-center justify-end space-x-4 w-full md:w-auto">
             <button class="relative p-2 text-gray-700 hover:text-pink-800" aria-label="wishList">
@@ -45,21 +50,6 @@
     </section>
 
     <!--Navbar links-->
-    <nav class="bg-slate-900" aria-label="main navegation">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ul class="hidden md:flex justify-center py-3 flex-wrap gap-x-6 text-sm font-medium text-white">
-          <li v-for="item in navItems" :key="item.id">
-            <a :href="item.link" class="hover:text-sky-500">{{ item.name }}</a>
-          </li>
-        </ul>
-        <section v-if="isMobileMenuOpen"
-          class="md:hidden mt-2 bg-white rounded-lg shadow-md p-4 space-y-3 text-[#5D4037] text-center"
-          aria-label="Movile-navigation">
-          <a v-for="item in navItems" :href="item.link" :key="item.id"
-            class="block hover:text-amber-600 text-sm font-medium">{{ item.name }}</a>
-        </section>
-      </div>
-    </nav>
   </header>
 </template>
 <script setup>
