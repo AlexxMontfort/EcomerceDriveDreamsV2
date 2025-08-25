@@ -6,7 +6,7 @@
 
           <!--LOGO + MENU DESPLEGABLE -->
           <div class="flex justify-between items-center w-full md:w-auto">
-            <a href="/" class="text-2xl font-bold text-pink-900">DRIVE-DREAMS</a>
+            <a href="/" class="text-2xl font-bold text-red-700">DRIVE-DREAMS</a>
             <button class="md:hidden text-gray-700 hover:text-indigo-600" aria-label="Toggle mobile menu"
               @click="isMobileMenuOpen = !isMobileMenuOpen">
               <Icon icon="mdi:menu" class="w-6 h-6" />
