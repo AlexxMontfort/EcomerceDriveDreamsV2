@@ -42,7 +42,7 @@
                 class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">5</span>
             </button>
             <button class="relative p-2 text-gray-700 hover:text-pink-800" aria-label="wishList">
-              <Icon icon="mdi:account-outline" class="w-5 h-5"></Icon>
+              <UserDropDown />
             </button>
           </aside>
         </div>
@@ -77,5 +77,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+import UserDropDown from "./UserDropDown.vue";
 
 </script>
