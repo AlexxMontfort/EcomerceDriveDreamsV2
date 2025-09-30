@@ -1,10 +1,18 @@
-import { createApp } from 'vue';
-import './style.css';
-import  App  from './App.vue';
-//iconify
-import { Icon } from "@iconify/vue";
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
+import { Icon } from '@iconify/vue'
 
-// configuracion de router
+// importar el router
+import { router } from './router'
 
+const app = createApp(App)
 
-createApp(App).component('Icon', Icon).mount('#app')
+// registrar componente global
+app.component('Icon', Icon)
+
+// inyectar router en la app
+app.use(router)
+
+// montar la app en el div #app
+app.mount('#app')

@@ -3,6 +3,16 @@
 <Hero />
 <Products />
 <Store />
+<!--ROUTERLINKS-->
+<div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/admin">Admin</router-link>
+    </nav>
+
+    <!-- Aquí se montan las pantallas según la ruta -->
+    <router-view />
+  </div>
 </template>
 <style>
 

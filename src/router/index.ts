@@ -1,35 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home       from '@/views/Home.vue'
-import Favorites  from '@/views/Favorites.vue'
-import Cart       from '@/views/Cart.vue'
-import Login      from '@/views/Login.vue'
-import Register   from '@/views/Register.vue'
-import Admin      from '@/views/Admin.vue'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-const routes = [
-  { path: '/',           name: 'Home',       component: Home },
-  { path: '/favorites',  name: 'Favorites',  component: Favorites },
-  { path: '/cart',       name: 'Cart',       component: Cart },
-  { path: '/login',      name: 'Login',      component: Login },
-  { path: '/register',   name: 'Register',   component: Register },
-  { 
-    path: '/admin', 
-    name: 'Admin', 
-    component: Admin, 
-    meta: { requiresAuth: true } 
-  },
+const Home = () => import('../views/Home.vue')
+const Admin = () => import('../views/Admin.vue')
+const NotFound = () => import('../views/NotFound.vue')
+
+const routes: RouteRecordRaw[] = [
+  { path: '/', name: 'Home', component: Home },
+  { path: '/admin', name: 'Admin', component: Admin },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
 ]
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 })
-
-// Guard para rutas protegidas
-router.beforeEach((to, from, next) => {
-  const loggedIn = !!localStorage.getItem('token')  // o desde tu store de usuario
-  if (to.meta.requiresAuth && !loggedIn) next('/login')
-  else next()
-})
-
-export default router
