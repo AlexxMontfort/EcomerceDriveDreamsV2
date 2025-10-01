@@ -1,4 +1,7 @@
 <template>
-
-    <h1>HOMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE</h1>
+    
 </template>
+
+
+<script>
+</script>

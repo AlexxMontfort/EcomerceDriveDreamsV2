@@ -1,4 +1,5 @@
 <template>
+<router-view />
 <Header />
 <Hero />
 <Products />
@@ -9,9 +10,6 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/admin">Admin</router-link>
     </nav>
-
-    <!-- Aquí se montan las pantallas según la ruta -->
-    <router-view />
   </div>
 </template>
 <style>
