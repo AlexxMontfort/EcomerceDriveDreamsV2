@@ -48,12 +48,6 @@
         </div>
       </div>
     </section>
-<!--admin link test-->
-<nav>
-  <router-link to="/admin">Admin</router-link> <!-- NUEVO -->
-</nav>
-<!--admin link test-->
-
     <!--Navbar links-->
   </header>
 </template>
